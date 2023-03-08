@@ -50,13 +50,6 @@ Halt:
 	j	$31
 	.end Halt
 
-	.globl Add
-	.ent	Add
-Add:
-	addiu $2,$0,SC_Add
-	syscall
-	j 	$31
-	.end Add
 
 	.globl Exit
 	.ent	Exit

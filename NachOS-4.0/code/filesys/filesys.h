@@ -37,33 +37,33 @@
 #include "sysdep.h"
 #include "openfile.h"
 
-#ifdef FILESYS_STUB 		// Temporarily implement file system calls as 
-				// calls to UNIX, until the real file system
-				// implementation is available
-class FileSystem {
-  public:
-    FileSystem() {}
+// #ifdef FILESYS_STUB 		// Temporarily implement file system calls as 
+// 				// calls to UNIX, until the real file system
+// 				// implementation is available
+// class FileSystem {
+//   public:
+//     FileSystem() {}
 
-    bool Create(char *name) {
-	int fileDescriptor = OpenForWrite(name);
+//     bool Create(char *name) {
+// 	int fileDescriptor = OpenForWrite(name);
 
-	if (fileDescriptor == -1) return FALSE;
-	Close(fileDescriptor); 
-	return TRUE; 
-	}
+// 	if (fileDescriptor == -1) return FALSE;
+// 	Close(fileDescriptor); 
+// 	return TRUE; 
+// 	}
 
-    OpenFile* Open(char *name) {
-	  int fileDescriptor = OpenForReadWrite(name, FALSE);
+//     OpenFile* Open(char *name) {
+// 	  int fileDescriptor = OpenForReadWrite(name, FALSE);
 
-	  if (fileDescriptor == -1) return NULL;
-	  return new OpenFile(fileDescriptor);
-      }
+// 	  if (fileDescriptor == -1) return NULL;
+// 	  return new OpenFile(fileDescriptor);
+//       }
 
-    bool Remove(char *name) { return Unlink(name) == 0; }
+//     bool Remove(char *name) { return Unlink(name) == 0; }
 
-};
+// };
 
-#else // FILESYS
+// #else // FILESYS
 class FileSystem {
   public:
     FileSystem(bool format);		// Initialize the file system.
@@ -91,6 +91,6 @@ class FileSystem {
 					// file names, represented as a file
 };
 
-#endif // FILESYS
+// #endif // FILESYS
 
 #endif // FS_H

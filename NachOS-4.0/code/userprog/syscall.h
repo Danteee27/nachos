@@ -34,8 +34,10 @@
 #define SC_ExecV	13
 #define SC_ThreadExit   14
 #define SC_ThreadJoin   15
+#define SC_CreateFile 16
 
-#define SC_Add		42
+#define SC_Print	19
+
 
 #ifndef IN_ASM
 
@@ -58,6 +60,8 @@ void Halt();
  */ 
 
 int Add(int op1, int op2);
+
+void Print(char *buffer);
 
 /* Address space control operations: Exit, Exec, Execv, and Join */
 
@@ -112,6 +116,8 @@ typedef int OpenFileId;
 /* Note: Create does not open the file.   */
 /* Return 1 on success, negative error code on failure */
 int Create(char *name);
+
+int CreateFile(char* name);
 
 /* Remove a Nachos file, with name "name" */
 int Remove(char *name);
